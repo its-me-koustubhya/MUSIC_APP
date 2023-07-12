@@ -32,21 +32,20 @@ const DashboardUserCard = ({ data, index }) => {
   };
 
   const deleteUser = (userId) => {
-    // setIsLoading(true);
-    // removeUser(userId).then((res) => {
-    //   if (res) {
-    //     getAllUsers().then((data) => {
-    //       dispatch({
-    //         type: actionType.SET_ALL_USERS,
-    //         allUsers: data.data,
-    //       });
-    //     });
-    //     setTimeout(() => {
-    //       setIsLoading(false);
-    //     }, 2000);
-    //   }
-    // });
-    console.log(userId);
+    setIsLoading(true);
+    removeUser(userId).then((res) => {
+      if (res) {
+        getAllUsers().then((data) => {
+          dispatch({
+            type: actionType.SET_ALL_USERS,
+            allUsers: data.data,
+          });
+        });
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
+      }
+    });
   };
 
   const containerStyle = {
@@ -83,7 +82,6 @@ const DashboardUserCard = ({ data, index }) => {
     alignItems: "center",
     justifyContent: "center",
     gap: "0.375rem",
-    position: "relative",
   } 
   const imageStyle = {
     width: "2.5rem",
